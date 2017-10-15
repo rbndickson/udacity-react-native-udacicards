@@ -12,16 +12,12 @@ import { white, black, blue } from '../utils/colors';
 import { getDecks } from '../utils/api';
 import { addDecks } from '../actions';
 
-class NewDeck extends Component {
+class DeckList extends Component {
   componentDidMount() {
     getDecks()
       .then((decks) => {
         this.props.dispatch(addDecks(JSON.parse(decks)))
       })
-  }
-
-  openDeck = () => {
-    return true;
   }
 
   render() {
@@ -31,7 +27,6 @@ class NewDeck extends Component {
           <TouchableOpacity
             key={deckTitle}
             style={styles.listItem}
-            onPress={()=>{this.openDeck()}}
             >
             <Text style={styles.listText}>{deckTitle}</Text>
           </TouchableOpacity>
@@ -44,7 +39,7 @@ class NewDeck extends Component {
 const styles = StyleSheet.create({
   list: {
     flex: 1,
-    alignItems: 'flex-start',
+    alignItems: 'center',
     paddingTop: 50,
   },
   listItem: {
@@ -64,11 +59,10 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
   const deckTitles = Object.keys(state).map(key => (state[key].title));
-  console.log(deckTitles)
 
   return {
     deckTitles: deckTitles
   }
 }
 
-export default connect(mapStateToProps)(NewDeck)
+export default connect(mapStateToProps)(DeckList)

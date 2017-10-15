@@ -11,6 +11,10 @@ import { white, black, blue } from '../utils/colors';
 import { createDeck, getDecks } from '../utils/api';
 
 export default class NewDeck extends Component {
+  static navigationOptions = {
+    title: 'Add Deck',
+  }
+
   state = {
     text: ''
   }
@@ -44,7 +48,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 50
+    paddingTop: 50,
+    backgroundColor: white
   },
   textInstructions: {
     width: 200
