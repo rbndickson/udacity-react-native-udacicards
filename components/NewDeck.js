@@ -8,13 +8,16 @@ import {
 } from 'react-native';
 import { white, black, blue } from '../utils/colors';
 
+import { createDeck, getDecks } from '../utils/api';
+
 export default class NewDeck extends Component {
   state = {
     text: ''
   }
 
   submitDeckTitle = () => {
-    console.log(this.state.text)
+    createDeck(this.state.text)
+    getDecks().then(res => {console.log(res)})
   }
 
   render() {
