@@ -25,10 +25,11 @@ class DeckList extends Component {
   render() {
     return (
       <View style={styles.list}>
-        {this.props.deckTitles.map(title => (
+        {this.props.decks.map(deck => (
           <DeckListItem
-            title={title}
-            key={title}
+            title={deck.title}
+            amountOfCards={deck.cards.length}
+            key={deck.title}
             navigation={this.props.navigation}
           />
         ))}
@@ -46,10 +47,11 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps (state) {
-  const deckTitles = Object.keys(state).map(key => (state[key].title));
+  const deckKeys = Object.keys(state);
+  const decks = deckKeys.map(key => state[key]);
 
   return {
-    deckTitles: deckTitles
+    decks: decks
   };
 }
 

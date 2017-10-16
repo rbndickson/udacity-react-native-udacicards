@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
 
 import { getDecks } from '../utils/api';
 
@@ -16,7 +15,7 @@ class DeckListItem extends Component {
           this.props.navigation.navigate('Deck', { title: this.props.title })
         }}
       >
-        <Text style={styles.listText}>{`${this.props.title} (${this.props.decks[this.props.title].cards.length} cards)`}</Text>
+        <Text style={styles.listText}>{`${this.props.title} (${this.props.amountOfCards} cards)`}</Text>
       </TouchableOpacity>
     );
   }
@@ -38,10 +37,4 @@ const styles = StyleSheet.create({
   }
 });
 
-function mapStateToProps (state) {
-  return {
-    decks: state
-  };
-}
-
-export default connect(mapStateToProps)(DeckListItem);
+export default DeckListItem;
