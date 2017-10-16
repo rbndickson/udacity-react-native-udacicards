@@ -9,7 +9,7 @@ const DeckListItem = (props) => (
     key={props.title}
     style={styles.listItem}
     onPress={() => {
-      console.log(props.title)
+      props.navigation.navigate('Deck', { title: props.title })
     }}
   >
     <Text style={styles.listText}>{props.title}</Text>

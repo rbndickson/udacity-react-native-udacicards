@@ -7,8 +7,10 @@ import { Constants } from 'expo';
 
 import reducer from './reducers';
 
-import NewDeck from './components/NewDeck';
 import Home from './components/Home';
+import NewDeck from './components/NewDeck';
+import Deck from './components/Deck';
+
 
 const store = createStore(reducer);
 
@@ -33,6 +35,9 @@ const Stack = StackNavigator({
   },
   NewDeck: {
     screen: NewDeck
+  },
+  Deck: {
+    screen: Deck
   }
 })
 
