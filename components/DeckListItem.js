@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
+
+import { getDecks } from '../utils/api';
 
 import { blue, white } from '../utils/colors';
 
-
-const DeckListItem = (props) => (
-  <TouchableOpacity
-    key={props.title}
-    style={styles.listItem}
-    onPress={() => {
-      props.navigation.navigate('Deck', { title: props.title })
-    }}
-  >
-    <Text style={styles.listText}>{props.title}</Text>
-  </TouchableOpacity>
-);
+class DeckListItem extends Component {
+  render () {
+    return (
+      <TouchableOpacity
+        key={this.props.title}
+        style={styles.listItem}
+        onPress={() => {
+          this.props.navigation.navigate('Deck', { title: this.props.title })
+        }}
+      >
+        <Text style={styles.listText}>{`${this.props.title} (${this.props.decks[this.props.title].cards.length} cards)`}</Text>
+      </TouchableOpacity>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   listItem: {
@@ -30,6 +36,12 @@ const styles = StyleSheet.create({
     color: white,
     fontSize: 18
   }
-})
+});
 
-export default DeckListItem
+function mapStateToProps (state) {
+  return {
+    decks: state
+  };
+}
+
+export default connect(mapStateToProps)(DeckListItem);
