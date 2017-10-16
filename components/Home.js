@@ -2,16 +2,13 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
-  TextInput,
   TouchableOpacity,
   View
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
 
-import { white, black, blue } from '../utils/colors';
+import { white } from '../utils/colors';
 
 import DeckList from './DeckList';
-import NewDeck from './NewDeck';
 
 const Home = ({ navigation }) => (
   <View style={{flex:1, backgroundColor: white}}>
