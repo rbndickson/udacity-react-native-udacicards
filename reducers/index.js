@@ -2,7 +2,26 @@ import { ADD_DECKS, ADD_DECK } from '../actions';
 
 const initialState = {
   React: {
-    title: 'React'
+    title: 'React',
+    cards: [
+      {
+        front: 'What is React?',
+        back: 'A JavaScript library for building user interfaces'
+      },
+      {
+        front: 'When was React released?',
+        back: 'March 2013'
+      }
+    ]
+  },
+  Redux: {
+    title: 'Redux',
+    cards: [
+      {
+        front: 'What is redux?',
+        back: 'A predictable state container for JavaScript apps'
+      }
+    ]
   }
 }
 
