@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
+import { createCard } from '../utils/api';
+
 import { white, blue, black } from '../utils/colors';
 
 class NewCard extends Component {
@@ -13,6 +15,14 @@ class NewCard extends Component {
   state = {
     frontText: '',
     backText: ''
+  }
+
+  submitCard = () => {
+    const { state, navigate } = this.props.navigation;
+    const { title } = this.props.navigation.state.params;
+
+    createCard(title, this.state)
+    navigate('Deck', { title: title })
   }
 
   render() {
@@ -34,7 +44,7 @@ class NewCard extends Component {
           value={this.state.backText}
           onChangeText={(backText) => this.setState({backText})}
         />
-        <TouchableOpacity style={styles.button} onPress={()=>{}}>
+        <TouchableOpacity style={styles.button} onPress={ () => {this.submitCard()}}>
           <Text style={styles.buttonText}>Add Card</Text>
         </TouchableOpacity>
       </View>
