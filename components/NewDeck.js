@@ -27,7 +27,8 @@ class NewDeck extends Component {
     createDeck(deckTitle)
     this.props.dispatch(addDeck({
       [deckTitle]: {
-        title: deckTitle
+        title: deckTitle,
+        cards: []
       }
     }))
     this.props.navigation.goBack()

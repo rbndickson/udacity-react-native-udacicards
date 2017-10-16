@@ -9,7 +9,8 @@ export function getDecks () {
 export function createDeck (title) {
   return AsyncStorage.mergeItem(DECKS_STORAGE_KEY, JSON.stringify({
     [title]: {
-      title: title
+      title: title,
+      cards: []
     }
   }));
 }
