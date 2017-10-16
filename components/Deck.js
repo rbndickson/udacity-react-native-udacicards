@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 
 import { white, blue, black } from '../utils/colors';
 
@@ -11,15 +12,16 @@ class Deck extends Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, deck } = this.props;
 
     return (
       <View style={styles.container}>
+        <Text>{`${this.props.deck.cards.length} cards`}</Text>
         <TouchableOpacity style={styles.button}>
           <Text
             style={styles.buttonText}
             onPress={ () => {
-              navigation.navigate('NewCard', {title: navigation.state.params.title})
+              navigation.navigate('NewCard', {title: deck.title})
             }}
           >
             Add New Card
@@ -69,4 +71,12 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Deck;
+function mapStateToProps (state, { navigation }) {
+  const title = navigation.state.params.title;
+
+  return {
+    deck: state[title]
+  }
+}
+
+export default connect(mapStateToProps)(Deck);
