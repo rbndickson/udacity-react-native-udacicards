@@ -15,15 +15,15 @@ const Home = ({ navigation }) => (
     <TouchableOpacity onPress={()=>{navigation.navigate('NewDeck')}}>
       <Text style={styles.addDeckText}>Add Deck</Text>
     </TouchableOpacity>
-    <DeckList />
+    <DeckList navigation={navigation}/>
   </View>
-)
+);
 
 const styles = StyleSheet.create({
   addDeckText: {
     fontSize: 20,
     textAlign: 'center'
   }
-})
+});
 
-export default Home
+export default Home;

@@ -7,10 +7,12 @@ import {
   View
 } from 'react-native';
 import { connect } from 'react-redux';
-import { white, black, blue } from '../utils/colors';
-
 import { getDecks } from '../utils/api';
 import { addDecks } from '../actions';
+
+import { white, black, blue } from '../utils/colors';
+
+import DeckListItem from './DeckListItem';
 
 class DeckList extends Component {
   componentDidMount() {
@@ -23,13 +25,11 @@ class DeckList extends Component {
   render() {
     return (
       <View style={styles.list}>
-        {this.props.deckTitles.map(deckTitle => (
-          <TouchableOpacity
-            key={deckTitle}
-            style={styles.listItem}
-            >
-            <Text style={styles.listText}>{deckTitle}</Text>
-          </TouchableOpacity>
+        {this.props.deckTitles.map(title => (
+          <DeckListItem
+            title={title}
+            navigation={this.props.navigation}
+          />
         ))}
       </View>
     );
@@ -41,28 +41,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingTop: 50,
-  },
-  listItem: {
-    width: 200,
-    paddingTop: 20,
-    paddingBottom: 20,
-    backgroundColor: blue,
-    alignItems: 'center'
-  },
-  listText: {
-    paddingLeft: 20,
-    paddingRight: 20,
-    color: white,
-    fontSize: 18
   }
-})
+});
 
 function mapStateToProps (state) {
   const deckTitles = Object.keys(state).map(key => (state[key].title));
 
   return {
     deckTitles: deckTitles
-  }
+  };
 }
 
-export default connect(mapStateToProps)(DeckList)
+export default connect(mapStateToProps)(DeckList);
