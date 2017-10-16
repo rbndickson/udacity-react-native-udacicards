@@ -1,32 +1,41 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 import { white, blue, black } from '../utils/colors';
 
-class Deck extends Component {
+class NewCard extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: navigation.state.params.title
     };
   }
 
-  render() {
-    const { navigation } = this.props;
+  state = {
+    frontText: '',
+    backText: ''
+  }
 
+  render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.button}>
-          <Text
-            style={styles.buttonText}
-            onPress={ () => {
-              navigation.navigate('NewCard', {title: navigation.state.params.title})
-            }}
-          >
-            Add New Card
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Take Quiz</Text>
+        <Text style={styles.textInstructions}>
+          Front:
+        </Text>
+        <TextInput
+          style={styles.textInput}
+          value={this.state.frontText}
+          onChangeText={(frontText) => this.setState({frontText: frontText})}
+        />
+        <Text style={styles.textInstructions}>
+          Back:
+        </Text>
+        <TextInput
+          style={styles.textInput}
+          value={this.state.backText}
+          onChangeText={(backText) => this.setState({backText})}
+        />
+        <TouchableOpacity style={styles.button} onPress={()=>{}}>
+          <Text style={styles.buttonText}>Add Card</Text>
         </TouchableOpacity>
       </View>
     )
@@ -42,6 +51,8 @@ const styles = StyleSheet.create({
     backgroundColor: white
   },
   textInstructions: {
+    marginTop: 16,
+    fontSize: 16,
     width: 200
   },
   textInput: {
@@ -69,4 +80,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Deck;
+export default NewCard;

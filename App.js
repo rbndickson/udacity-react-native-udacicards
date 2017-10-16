@@ -10,6 +10,7 @@ import reducer from './reducers';
 import Home from './components/Home';
 import NewDeck from './components/NewDeck';
 import Deck from './components/Deck';
+import NewCard from './components/NewCard';
 
 
 const store = createStore(reducer);
@@ -38,6 +39,9 @@ const Stack = StackNavigator({
   },
   Deck: {
     screen: Deck
+  },
+  NewCard: {
+    screen: NewCard
   }
 })
 
