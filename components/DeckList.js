@@ -28,6 +28,7 @@ class DeckList extends Component {
         {this.props.deckTitles.map(title => (
           <DeckListItem
             title={title}
+            key={title}
             navigation={this.props.navigation}
           />
         ))}
