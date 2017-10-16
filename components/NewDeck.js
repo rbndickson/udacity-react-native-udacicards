@@ -6,11 +6,14 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { connect } from 'react-redux';
+
 import { white, black, blue } from '../utils/colors';
 
 import { createDeck, getDecks } from '../utils/api';
+import { addDeck } from '../actions';
 
-export default class NewDeck extends Component {
+class NewDeck extends Component {
   static navigationOptions = {
     title: 'Add Deck',
   }
@@ -20,8 +23,14 @@ export default class NewDeck extends Component {
   }
 
   submitDeckTitle = () => {
-    createDeck(this.state.text)
-    getDecks().then(res => {console.log(res)})
+    const deckTitle = this.state.text;
+    createDeck(deckTitle)
+    this.props.dispatch(addDeck({
+      [deckTitle]: {
+        title: deckTitle
+      }
+    }))
+    this.props.navigation.goBack()
   }
 
   render() {
@@ -78,3 +87,5 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 })
+
+export default connect()(NewDeck);
