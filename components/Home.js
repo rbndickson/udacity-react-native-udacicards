@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,18 +10,34 @@ import { white } from '../utils/colors';
 
 import DeckList from './DeckList';
 
-const Home = ({ navigation }) => (
-  <View style={{flex:1, backgroundColor: white}}>
-    <TouchableOpacity onPress={()=>{navigation.navigate('NewDeck')}}>
+const addDeckButton = (navigation) => {
+  return (
+    <TouchableOpacity onPress={() => { navigation.navigate('NewDeck') }}>
       <Text style={styles.addDeckText}>Add Deck</Text>
     </TouchableOpacity>
-    <DeckList navigation={navigation}/>
-  </View>
-);
+  );
+}
+
+class Home extends Component {
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerRight: addDeckButton(navigation)
+    };
+  }
+
+  render() {
+    return (
+      <View style={{flex:1, backgroundColor: white}}>
+        <DeckList navigation={this.props.navigation}/>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   addDeckText: {
-    fontSize: 20,
+    fontSize: 18,
     textAlign: 'center'
   }
 });
