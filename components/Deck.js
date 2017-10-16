@@ -17,12 +17,14 @@ class Deck extends Component {
     return (
       <View style={styles.container}>
         <Text>{`${this.props.deck.cards.length} cards`}</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={ () => {
+            navigation.navigate('NewCard', {title: deck.title})
+          }}
+          >
           <Text
             style={styles.buttonText}
-            onPress={ () => {
-              navigation.navigate('NewCard', {title: deck.title})
-            }}
           >
             Add New Card
           </Text>
