@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 
 import { createCard } from '../utils/api';
+import { addCard } from '../actions';
 
 import { white, blue, black } from '../utils/colors';
 
@@ -22,6 +24,7 @@ class NewCard extends Component {
     const { title } = this.props.navigation.state.params;
 
     createCard(title, this.state)
+    this.props.dispatch(addCard(title, this.state))
     navigate('Deck', { title: title })
   }
 
@@ -90,4 +93,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default NewCard;
+export default connect()(NewCard);
