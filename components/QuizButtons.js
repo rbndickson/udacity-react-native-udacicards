@@ -12,6 +12,29 @@ import {
 import { white, blue } from '../utils/colors';
 
 class QuizButtons extends Component {
+  handleShowAnswer = () => {
+    this.props.dispatch(showAnswer())
+  }
+
+  handleCorrect = () => {
+    this.props.dispatch(updateQuizScore(this.props.score + 1))
+    this.updateQuizStatus()
+    this.props.dispatch(hideAnswer())
+  }
+
+  handleIncorrect = () => {
+    this.updateQuizStatus()
+    this.props.dispatch(hideAnswer())
+  }
+
+  updateQuizStatus = () => {
+    const { deck, currentCardIndex } = this.props;
+
+    if (currentCardIndex < deck.cards.length - 1) {
+      this.props.dispatch(updateCurrentCardIndex(currentCardIndex + 1))
+    }
+  }
+
   render() {
     const { deck, score, currentCardIndex } = this.props;
 
@@ -21,33 +44,20 @@ class QuizButtons extends Component {
           ? <View>
               <TouchableOpacity
                 style={styles.button}
-                onPress={ () => {
-                  this.props.dispatch(updateQuizScore(score + 1))
-                  if (currentCardIndex < deck.cards.length - 1) {
-                    this.props.dispatch(updateCurrentCardIndex(currentCardIndex + 1))
-                  }
-                  this.props.dispatch(hideAnswer())
-                }}
+                onPress={this.handleCorrect}
                 >
                 <Text style={styles.buttonText}>Correct</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.button}
-                onPress={ () => {
-                  if (currentCardIndex < deck.cards.length - 1) {
-                    this.props.dispatch(updateCurrentCardIndex(currentCardIndex + 1))
-                  }
-                  this.props.dispatch(hideAnswer())
-                }}
+                onPress={this.handleIncorrect}
                 >
                 <Text style={styles.buttonText}>Incorrect</Text>
               </TouchableOpacity>
             </View>
           : <TouchableOpacity
               style={styles.button}
-              onPress={ () => {
-                this.props.dispatch(showAnswer())
-              }}
+              onPress={this.handleShowAnswer}
               >
               <Text style={styles.buttonText}>Show Answer</Text>
             </TouchableOpacity>
