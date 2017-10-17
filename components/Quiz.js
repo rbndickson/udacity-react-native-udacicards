@@ -10,6 +10,7 @@ import {
 } from '../actions';
 
 import QuizCard from './QuizCard';
+import QuizScore from './QuizScore';
 
 import { white, blue, black } from '../utils/colors';
 
@@ -25,11 +26,7 @@ class Quiz extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.scoreContainer}>
-          <Text>
-            Score: {this.props.score}
-          </Text>
-        </View>
+        <QuizScore />
         <QuizCard title={deck.title}/>
         {this.props.showAnswer
           ? <View>
@@ -109,9 +106,6 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 18
-  },
-  scoreContainer: {
-    paddingBottom: 20
   }
 })
 
