@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import { setQuizDeck } from '../actions';
+import { setQuizDeck, resetQuiz } from '../actions';
 
 import QuizCard from './QuizCard';
 import QuizScore from './QuizScore';
@@ -16,6 +16,10 @@ class Quiz extends Component {
     return {
       title: navigation.state.params.title
     };
+  }
+
+  componentDidMount () {
+    this.props.dispatch(resetQuiz())
   }
 
   render() {
