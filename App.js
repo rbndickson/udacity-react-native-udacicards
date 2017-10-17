@@ -11,6 +11,7 @@ import Home from './components/Home';
 import NewDeck from './components/NewDeck';
 import Deck from './components/Deck';
 import NewCard from './components/NewCard';
+import Quiz from './components/Quiz';
 
 
 const store = createStore(reducer);
@@ -42,6 +43,9 @@ const Stack = StackNavigator({
   },
   NewCard: {
     screen: NewCard
+  },
+  Quiz: {
+    screen: Quiz
   }
 })
 
