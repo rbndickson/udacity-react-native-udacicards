@@ -9,6 +9,8 @@ import {
   updateQuizScore
 } from '../actions';
 
+import QuizCard from './QuizCard';
+
 import { white, blue, black } from '../utils/colors';
 
 class Quiz extends Component {
@@ -28,14 +30,7 @@ class Quiz extends Component {
             Score: {this.props.score}
           </Text>
         </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.cardText}>{this.props.deck.cards[this.props.currentCardIndex].frontText}</Text>
-        </View>
-        <View style={styles.textContainer}>
-          {this.props.showAnswer && (
-            <Text style={styles.cardText}>{this.props.deck.cards[this.props.currentCardIndex].backText}</Text>
-          )}
-        </View>
+        <QuizCard title={deck.title}/>
         {this.props.showAnswer
           ? <View>
               <TouchableOpacity
