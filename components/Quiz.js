@@ -2,17 +2,11 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import {
-  showAnswer,
-  hideAnswer,
-  updateCurrentCardIndex,
-  updateQuizScore
-} from '../actions';
-
 import QuizCard from './QuizCard';
 import QuizScore from './QuizScore';
+import QuizButtons from './QuizButtons';
 
-import { white, blue, black } from '../utils/colors';
+import { white } from '../utils/colors';
 
 class Quiz extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -22,47 +16,13 @@ class Quiz extends Component {
   }
 
   render() {
-    const { navigation, deck } = this.props;
+    const title = this.props.navigation.state.params.title;
 
     return (
       <View style={styles.container}>
         <QuizScore />
-        <QuizCard title={deck.title}/>
-        {this.props.showAnswer
-          ? <View>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={ () => {
-                  this.props.dispatch(updateQuizScore(this.props.score + 1))
-                  if (this.props.currentCardIndex < this.props.deck.cards.length - 1) {
-                    this.props.dispatch(updateCurrentCardIndex(this.props.currentCardIndex + 1))
-                  }
-                  this.props.dispatch(hideAnswer())
-                }}
-                >
-                <Text style={styles.buttonText}>Correct</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={ () => {
-                  if (this.props.currentCardIndex < this.props.deck.cards.length - 1) {
-                    this.props.dispatch(updateCurrentCardIndex(this.props.currentCardIndex + 1))
-                  }
-                  this.props.dispatch(hideAnswer())
-                }}
-                >
-                <Text style={styles.buttonText}>Incorrect</Text>
-              </TouchableOpacity>
-            </View>
-          : <TouchableOpacity
-              style={styles.button}
-              onPress={ () => {
-                this.props.dispatch(showAnswer())
-              }}
-              >
-              <Text style={styles.buttonText}>Show Answer</Text>
-            </TouchableOpacity>
-        }
+        <QuizCard title={title}/>
+        <QuizButtons title={title} />
       </View>
     )
   }
@@ -75,32 +35,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 50,
     backgroundColor: white
-  },
-  button: {
-    height: 45,
-    width: 200,
-    backgroundColor: white,
-    padding: 10,
-    marginTop: 20,
-    borderRadius: 7,
-    borderWidth: 2,
-  },
-  buttonText: {
-    color: blue,
-    fontSize: 18,
-    textAlign: 'center'
   }
 })
 
-function mapStateToProps (state, { navigation }) {
-  const title = navigation.state.params.title;
-
-  return {
-    deck: state.decks[title],
-    currentCardIndex: state.quiz.currentCardIndex,
-    showAnswer: state.quiz.showAnswer,
-    score: state.quiz.score
-  }
-}
-
-export default connect(mapStateToProps)(Quiz);
+export default connect()(Quiz);
