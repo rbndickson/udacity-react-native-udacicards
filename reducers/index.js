@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux';
 import { ADD_DECKS, ADD_DECK, ADD_CARD } from '../actions';
 
 function decks (state = {}, action) {
@@ -25,4 +26,18 @@ function decks (state = {}, action) {
   }
 }
 
-export default decks
+initialQuizState = {
+  currentCardIndex: 0
+}
+
+function quiz (state = initialQuizState, action) {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({
+  decks,
+  quiz,
+})

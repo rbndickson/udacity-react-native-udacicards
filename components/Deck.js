@@ -11,12 +11,15 @@ class Deck extends Component {
     };
   }
 
+  componentDidMount () {
+    // Set quiz index to 0
+  }
+
   render() {
     const { navigation, deck } = this.props;
 
     return (
       <View style={styles.container}>
-        <Text>{`${this.props.deck.cards.length} cards`}</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={ () => {
@@ -29,7 +32,12 @@ class Deck extends Component {
             Add New Card
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={ () => {
+            navigation.navigate('Quiz', {title: deck.title})
+          }}
+          >
           <Text style={styles.buttonText}>Take Quiz</Text>
         </TouchableOpacity>
       </View>
@@ -77,7 +85,7 @@ function mapStateToProps (state, { navigation }) {
   const title = navigation.state.params.title;
 
   return {
-    deck: state[title]
+    deck: state.decks[title]
   }
 }
 

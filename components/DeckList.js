@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps (state) {
-  const deckKeys = Object.keys(state);
-  const decks = deckKeys.map(key => state[key]);
+  const deckKeys = Object.keys(state.decks);
+  const decks = deckKeys.map(key => state.decks[key]);
 
   return {
     decks: decks
