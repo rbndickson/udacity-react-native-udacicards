@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import { showAnswer } from '../actions';
+import {
+  showAnswer,
+  hideAnswer,
+  updateCurrentCardIndex,
+  updateQuizScore
+} from '../actions';
 
 import { white, blue, black } from '../utils/colors';
 
@@ -18,6 +23,11 @@ class Quiz extends Component {
 
     return (
       <View style={styles.container}>
+        <View style={styles.scoreContainer}>
+          <Text>
+            Score: {this.props.score}
+          </Text>
+        </View>
         <View style={styles.textContainer}>
           <Text style={styles.cardText}>{this.props.deck.cards[this.props.currentCardIndex].frontText}</Text>
         </View>
@@ -26,14 +36,41 @@ class Quiz extends Component {
             <Text style={styles.cardText}>{this.props.deck.cards[this.props.currentCardIndex].backText}</Text>
           )}
         </View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={ () => {
-            this.props.dispatch(showAnswer())
-          }}
-          >
-          <Text style={styles.buttonText}>Show Answer</Text>
-        </TouchableOpacity>
+        {this.props.showAnswer
+          ? <View>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={ () => {
+                  this.props.dispatch(updateQuizScore(this.props.score + 1))
+                  if (this.props.currentCardIndex < this.props.deck.cards.length - 1) {
+                    this.props.dispatch(updateCurrentCardIndex(this.props.currentCardIndex + 1))
+                  }
+                  this.props.dispatch(hideAnswer())
+                }}
+                >
+                <Text style={styles.buttonText}>Correct</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={ () => {
+                  if (this.props.currentCardIndex < this.props.deck.cards.length - 1) {
+                    this.props.dispatch(updateCurrentCardIndex(this.props.currentCardIndex + 1))
+                  }
+                  this.props.dispatch(hideAnswer())
+                }}
+                >
+                <Text style={styles.buttonText}>Incorrect</Text>
+              </TouchableOpacity>
+            </View>
+          : <TouchableOpacity
+              style={styles.button}
+              onPress={ () => {
+                this.props.dispatch(showAnswer())
+              }}
+              >
+              <Text style={styles.buttonText}>Show Answer</Text>
+            </TouchableOpacity>
+        }
       </View>
     )
   }
@@ -77,6 +114,9 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 18
+  },
+  scoreContainer: {
+    paddingBottom: 20
   }
 })
 
@@ -86,7 +126,8 @@ function mapStateToProps (state, { navigation }) {
   return {
     deck: state.decks[title],
     currentCardIndex: state.quiz.currentCardIndex,
-    showAnswer: state.quiz.showAnswer
+    showAnswer: state.quiz.showAnswer,
+    score: state.quiz.score
   }
 }
 
