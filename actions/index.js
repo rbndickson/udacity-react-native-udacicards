@@ -1,6 +1,7 @@
 export const ADD_DECKS = 'ADD_DECKS';
 export const ADD_DECK = 'ADD_DECK';
 export const ADD_CARD = 'ADD_CARD';
+export const SET_QUIZ_DECK_TITLE = 'SET_QUIZ_DECK_TITLE';
 export const SHOW_ANSWER = 'SHOW_ANSWER';
 export const HIDE_ANSWER = 'HIDE_ANSWER';
 export const UPDATE_QUIZ_SCORE = 'UPDATE_QUIZ_SCORE';
@@ -25,6 +26,13 @@ export function addCard (deckTitle, card) {
     type: ADD_CARD,
     deckTitle,
     card
+  }
+}
+
+export function setQuizDeckTitle (title) {
+  return {
+    type: SET_QUIZ_DECK_TITLE,
+    title
   }
 }
 

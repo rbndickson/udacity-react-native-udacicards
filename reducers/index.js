@@ -3,6 +3,7 @@ import {
   ADD_DECKS,
   ADD_DECK,
   ADD_CARD,
+  SET_QUIZ_DECK_TITLE,
   SHOW_ANSWER,
   HIDE_ANSWER,
   UPDATE_CURRENT_CARD_INDEX,
@@ -42,6 +43,11 @@ initialQuizState = {
 
 function quiz (state = initialQuizState, action) {
   switch (action.type) {
+    case SET_QUIZ_DECK_TITLE :
+      return {
+        ...state,
+        title: action.title
+      }
     case SHOW_ANSWER :
       return {
         ...state,
@@ -53,7 +59,6 @@ function quiz (state = initialQuizState, action) {
         showAnswer: false
       }
     case UPDATE_CURRENT_CARD_INDEX :
-    console.log(action.cardIndex)
       return {
         ...state,
         currentCardIndex: action.cardIndex

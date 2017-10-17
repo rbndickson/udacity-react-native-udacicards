@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import { setQuizDeckTitle } from '../actions';
+
 import { white, blue, black } from '../utils/colors';
 
 class Deck extends Component {
@@ -9,10 +11,6 @@ class Deck extends Component {
     return {
       title: navigation.state.params.title
     };
-  }
-
-  componentDidMount () {
-    // Set quiz index to 0
   }
 
   render() {
@@ -35,6 +33,7 @@ class Deck extends Component {
         <TouchableOpacity
           style={styles.button}
           onPress={ () => {
+            this.props.dispatch(setQuizDeckTitle(deck.title))
             navigation.navigate('Quiz', {title: deck.title})
           }}
           >

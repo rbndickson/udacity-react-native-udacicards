@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import { setQuizDeck } from '../actions';
+
 import QuizCard from './QuizCard';
 import QuizScore from './QuizScore';
 import QuizButtons from './QuizButtons';
@@ -20,9 +22,11 @@ class Quiz extends Component {
 
     return (
       <View style={styles.container}>
-        <QuizScore />
-        <QuizCard title={title}/>
-        <QuizButtons title={title} />
+        <View>
+          <QuizScore />
+          <QuizCard />
+          <QuizButtons />
+        </View>
       </View>
     )
   }
@@ -38,4 +42,10 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect()(Quiz);
+function mapStateToProps (state) {
+  return {
+    title: state.quiz.title
+  }
+}
+
+export default connect(mapStateToProps)(Quiz);
