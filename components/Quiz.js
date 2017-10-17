@@ -76,17 +76,6 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     backgroundColor: white
   },
-  textInstructions: {
-    width: 200
-  },
-  textInput: {
-    width: 200,
-    height: 40,
-    marginTop: 20,
-    borderColor: blue,
-    borderWidth: 1,
-    color: black
-  },
   button: {
     height: 45,
     width: 200,
@@ -100,12 +89,6 @@ const styles = StyleSheet.create({
     color: blue,
     fontSize: 18,
     textAlign: 'center'
-  },
-  textContainer: {
-    height: 60
-  },
-  cardText: {
-    fontSize: 18
   }
 })
 
