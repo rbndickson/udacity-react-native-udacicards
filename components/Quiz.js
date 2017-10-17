@@ -7,6 +7,7 @@ import { setQuizDeck } from '../actions';
 import QuizCard from './QuizCard';
 import QuizScore from './QuizScore';
 import QuizButtons from './QuizButtons';
+import QuizComplete from './QuizComplete';
 
 import { white } from '../utils/colors';
 
@@ -21,14 +22,7 @@ class Quiz extends Component {
     return (
       <View style={styles.container}>
         {this.props.quizComplete
-          ? <View>
-              <Text style={styles.quizCompleteTitle}>
-                Quiz Complete!
-              </Text>
-              <Text style={styles.quizCompleteBody}>
-                {`You scored ${this.props.score} out of ${this.props.cardQuantity}.`}
-              </Text>
-            </View>
+          ? <QuizComplete />
           : <View>
               <QuizScore />
               <QuizCard />
@@ -47,23 +41,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 50,
     backgroundColor: white
-  },
-  quizCompleteTitle: {
-    fontSize: 20,
-    textAlign: 'center',
-    marginBottom: 20
-  },
-  quizCompleteBody: {
-    fontSize: 18,
-    textAlign: 'center'
   }
 })
 
 function mapStateToProps (state) {
   return {
     quizComplete: state.quiz.complete,
-    score: state.quiz.score,
-    cardQuantity: state.decks[state.quiz.title].cards.length
   }
 }
 

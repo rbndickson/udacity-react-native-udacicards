@@ -8,7 +8,8 @@ import {
   HIDE_ANSWER,
   UPDATE_CURRENT_CARD_INDEX,
   UPDATE_QUIZ_SCORE,
-  SET_QUIZ_TO_COMPLETE
+  SET_QUIZ_TO_COMPLETE,
+  RESET_QUIZ
 } from '../actions';
 
 function decks (state = {}, action) {
@@ -74,6 +75,11 @@ function quiz (state = initialQuizState, action) {
       return {
         ...state,
         complete: true
+      }
+    case RESET_QUIZ :
+      return {
+        ...state,
+        ...initialQuizState
       }
     default:
       return state;
