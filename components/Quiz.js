@@ -18,15 +18,23 @@ class Quiz extends Component {
   }
 
   render() {
-    const title = this.props.navigation.state.params.title;
-
     return (
       <View style={styles.container}>
-        <View>
-          <QuizScore />
-          <QuizCard />
-          <QuizButtons />
-        </View>
+        {this.props.quizComplete
+          ? <View>
+              <Text style={styles.quizCompleteTitle}>
+                Quiz Complete!
+              </Text>
+              <Text style={styles.quizCompleteBody}>
+                {`You scored ${this.props.score} out of ${this.props.cardQuantity}.`}
+              </Text>
+            </View>
+          : <View>
+              <QuizScore />
+              <QuizCard />
+              <QuizButtons />
+            </View>
+        }
       </View>
     )
   }
@@ -39,12 +47,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 50,
     backgroundColor: white
+  },
+  quizCompleteTitle: {
+    fontSize: 20,
+    textAlign: 'center',
+    marginBottom: 20
+  },
+  quizCompleteBody: {
+    fontSize: 18,
+    textAlign: 'center'
   }
 })
 
 function mapStateToProps (state) {
   return {
-    title: state.quiz.title
+    quizComplete: state.quiz.complete,
+    score: state.quiz.score,
+    cardQuantity: state.decks[state.quiz.title].cards.length
   }
 }
 

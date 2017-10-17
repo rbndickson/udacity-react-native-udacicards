@@ -6,7 +6,8 @@ import {
   showAnswer,
   hideAnswer,
   updateCurrentCardIndex,
-  updateQuizScore
+  updateQuizScore,
+  setQuizToComplete
 } from '../actions';
 
 import { white, blue } from '../utils/colors';
@@ -32,6 +33,8 @@ class QuizButtons extends Component {
 
     if (currentCardIndex < deck.cards.length - 1) {
       this.props.dispatch(updateCurrentCardIndex(currentCardIndex + 1))
+    } else {
+      this.props.dispatch(setQuizToComplete())
     }
   }
 

@@ -6,6 +6,7 @@ export const SHOW_ANSWER = 'SHOW_ANSWER';
 export const HIDE_ANSWER = 'HIDE_ANSWER';
 export const UPDATE_QUIZ_SCORE = 'UPDATE_QUIZ_SCORE';
 export const UPDATE_CURRENT_CARD_INDEX = 'UPDATE_CURRENT_CARD_INDEX';
+export const SET_QUIZ_TO_COMPLETE = 'SET_QUIZ_TO_COMPLETE';
 
 export function addDecks (decks) {
   return {
@@ -59,5 +60,11 @@ export function updateQuizScore (score) {
   return {
     type: UPDATE_QUIZ_SCORE,
     score
+  }
+}
+
+export function setQuizToComplete () {
+  return {
+    type: SET_QUIZ_TO_COMPLETE
   }
 }
