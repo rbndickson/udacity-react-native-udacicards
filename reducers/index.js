@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_DECKS, ADD_DECK, ADD_CARD } from '../actions';
+import { ADD_DECKS, ADD_DECK, ADD_CARD, SHOW_ANSWER } from '../actions';
 
 function decks (state = {}, action) {
   switch (action.type) {
@@ -27,11 +27,17 @@ function decks (state = {}, action) {
 }
 
 initialQuizState = {
-  currentCardIndex: 0
+  currentCardIndex: 0,
+  showAnswer: false
 }
 
 function quiz (state = initialQuizState, action) {
   switch (action.type) {
+    case SHOW_ANSWER :
+      return {
+        ...state,
+        showAnswer: true
+      }
     default:
       return state;
   }

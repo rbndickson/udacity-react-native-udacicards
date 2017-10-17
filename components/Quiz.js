@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import { showAnswer } from '../actions';
+
 import { white, blue, black } from '../utils/colors';
 
 class Quiz extends Component {
@@ -16,9 +18,21 @@ class Quiz extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>{this.props.deck.cards[this.props.currentCardIndex].frontText}</Text>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Flip Card</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.cardText}>{this.props.deck.cards[this.props.currentCardIndex].frontText}</Text>
+        </View>
+        <View style={styles.textContainer}>
+          {this.props.showAnswer && (
+            <Text style={styles.cardText}>{this.props.deck.cards[this.props.currentCardIndex].backText}</Text>
+          )}
+        </View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={ () => {
+            this.props.dispatch(showAnswer())
+          }}
+          >
+          <Text style={styles.buttonText}>Show Answer</Text>
         </TouchableOpacity>
       </View>
     )
@@ -57,6 +71,12 @@ const styles = StyleSheet.create({
     color: blue,
     fontSize: 18,
     textAlign: 'center'
+  },
+  textContainer: {
+    height: 60
+  },
+  cardText: {
+    fontSize: 18
   }
 })
 
@@ -65,7 +85,8 @@ function mapStateToProps (state, { navigation }) {
 
   return {
     deck: state.decks[title],
-    currentCardIndex: state.quiz.currentCardIndex
+    currentCardIndex: state.quiz.currentCardIndex,
+    showAnswer: state.quiz.showAnswer
   }
 }
 
