@@ -14,7 +14,7 @@ import { white } from '../utils/colors';
 class Quiz extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: navigation.state.params.title
+      title: `Quiz: ${navigation.state.params.title}`
     };
   }
 

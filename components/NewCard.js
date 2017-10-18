@@ -10,7 +10,7 @@ import { white, blue, black } from '../utils/colors';
 class NewCard extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Add Card'
+      title: 'Create New Question'
     };
   }
 

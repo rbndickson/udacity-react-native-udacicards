@@ -30,7 +30,7 @@ class Deck extends Component {
           <Text
             style={styles.buttonText}
           >
-            Add New Card
+            Create New Question
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -40,7 +40,7 @@ class Deck extends Component {
             navigation.navigate('Quiz', {title: deck.title})
           }}
           >
-          <Text style={styles.buttonText}>Take Quiz</Text>
+          <Text style={styles.buttonText}>Start a Quiz</Text>
         </TouchableOpacity>
       </View>
     )
