@@ -18,6 +18,9 @@ class Deck extends Component {
 
     return (
       <View style={styles.container}>
+        <Text style={styles.bodyText}>
+          {`This deck has ${deck.cards.length} Cards`}
+        </Text>
         <TouchableOpacity
           style={styles.button}
           onPress={ () => {
@@ -52,16 +55,9 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     backgroundColor: white
   },
-  textInstructions: {
-    width: 200
-  },
-  textInput: {
-    width: 200,
-    height: 40,
-    marginTop: 20,
-    borderColor: blue,
-    borderWidth: 1,
-    color: black
+  bodyText: {
+    fontSize: 18,
+    marginBottom: 20
   },
   button: {
     height: 45,
