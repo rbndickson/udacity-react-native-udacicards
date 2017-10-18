@@ -13,6 +13,21 @@ class Deck extends Component {
     };
   }
 
+  handleQuizStart = () => {
+    const { navigation, deck } = this.props;
+
+    if (this.deckHasCards()) {
+      this.props.dispatch(setQuizDeckTitle(deck.title))
+      navigation.navigate('Quiz', {title: deck.title})
+    } else {
+      navigation.navigate('NewCard', {title: deck.title})
+    }
+  }
+
+  deckHasCards = () => {
+    return this.props.deck.cards.length > 0
+  }
+
   render() {
     const { navigation, deck } = this.props;
 
@@ -35,10 +50,7 @@ class Deck extends Component {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={ () => {
-            this.props.dispatch(setQuizDeckTitle(deck.title))
-            navigation.navigate('Quiz', {title: deck.title})
-          }}
+          onPress={this.handleQuizStart}
           >
           <Text style={styles.buttonText}>Start a Quiz</Text>
         </TouchableOpacity>
