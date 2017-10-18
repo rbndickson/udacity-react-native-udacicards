@@ -20,12 +20,11 @@ class NewCard extends Component {
   }
 
   submitCard = () => {
-    const { state, navigate } = this.props.navigation;
     const { title } = this.props.navigation.state.params;
 
     createCard(title, this.state)
     this.props.dispatch(addCard(title, this.state))
-    navigate('Deck', { title: title })
+    this.props.navigation.goBack()
   }
 
   render() {
