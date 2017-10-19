@@ -3,10 +3,18 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { resetQuiz } from '../actions';
+import {
+  clearLocalNotification,
+  setLocalNotification
+} from '../utils/notifications';
 
 import { white, blue } from '../utils/colors';
 
 class QuizComplete extends Component {
+  componentDidMount () {
+    clearLocalNotification()
+      .then(setLocalNotification)
+  }
   handleReset = () => {
     this.props.dispatch(resetQuiz())
   }
