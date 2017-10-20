@@ -46,7 +46,7 @@ class NewDeck extends Component {
           onChangeText={(text) => this.setState({text})}
         />
         <TouchableOpacity style={styles.submitButton} onPress={()=>{this.submitDeckTitle()}}>
-          <Text style={styles.submitButtonText}>Add Deck</Text>
+          <Text style={styles.submitButtonText}>Create Deck</Text>
         </TouchableOpacity>
       </View>
     );
