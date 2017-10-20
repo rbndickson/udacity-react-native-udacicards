@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { setQuizDeckTitle } from '../actions';
 
-import { white } from '../utils/colors';
+import { mainBackgroundColor } from '../utils/colors';
 
 import Button from './Button';
 
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingTop: 50,
-    backgroundColor: white
+    backgroundColor: mainBackgroundColor
   },
   bodyText: {
     fontSize: 18,

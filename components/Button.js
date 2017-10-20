@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import { white, blue } from '../utils/colors';
+import { buttonBackgroundColor, buttonTextColor } from '../utils/colors';
 
 export default function Button ({ onPress, text}) {
   return (
@@ -18,16 +18,15 @@ export default function Button ({ onPress, text}) {
 const styles = StyleSheet.create({
   button: {
     width: 200,
-    backgroundColor: white,
+    backgroundColor: buttonBackgroundColor,
     padding: 10,
     marginTop: 20,
-    borderRadius: 7,
-    borderWidth: 2,
-    borderColor: blue
+    borderRadius: 20,
   },
   buttonText: {
-    color: blue,
+    color: buttonTextColor,
     fontSize: 18,
+    fontWeight: '600',
     textAlign: 'center'
   }
 })
