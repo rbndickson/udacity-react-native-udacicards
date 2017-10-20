@@ -18,6 +18,9 @@ class QuizComplete extends Component {
   handleReset = () => {
     this.props.dispatch(resetQuiz())
   }
+  handlebackToDeck = () => {
+    this.props.navigation.goBack();
+  }
 
   render() {
     return (
@@ -34,6 +37,14 @@ class QuizComplete extends Component {
           >
           <Text style={styles.buttonText}>
             Try Again
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={this.handlebackToDeck}
+          >
+          <Text style={styles.buttonText}>
+            Back to Deck
           </Text>
         </TouchableOpacity>
       </View>

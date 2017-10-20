@@ -27,7 +27,7 @@ class Quiz extends Component {
     return (
       <View style={styles.container}>
         {this.props.quizComplete
-          ? <QuizComplete />
+          ? <QuizComplete navigation={this.props.navigation} />
           : <View>
               <QuizScore />
               <QuizRemaining />
