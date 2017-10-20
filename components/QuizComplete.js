@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { resetQuiz } from '../actions';
@@ -8,7 +8,7 @@ import {
   setLocalNotification
 } from '../utils/notifications';
 
-import { white, blue } from '../utils/colors';
+import Button from './Button';
 
 class QuizComplete extends Component {
   componentDidMount () {
@@ -31,22 +31,14 @@ class QuizComplete extends Component {
         <Text style={styles.quizCompleteBody}>
           {`You scored ${this.props.score} out of ${this.props.cardQuantity}.`}
         </Text>
-        <TouchableOpacity
-          style={styles.button}
+        <Button
           onPress={this.handleReset}
-          >
-          <Text style={styles.buttonText}>
-            Restart Quiz
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
+          text={'Restart Quiz'}
+        />
+        <Button
           onPress={this.handlebackToDeck}
-          >
-          <Text style={styles.buttonText}>
-            Back to Deck
-          </Text>
-        </TouchableOpacity>
+          text={'Back to Deck'}
+        />
       </View>
     )
   }
@@ -59,20 +51,6 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   quizCompleteBody: {
-    fontSize: 18,
-    textAlign: 'center'
-  },
-  button: {
-    height: 45,
-    width: 200,
-    backgroundColor: white,
-    padding: 10,
-    marginTop: 20,
-    borderRadius: 7,
-    borderWidth: 2,
-  },
-  buttonText: {
-    color: blue,
     fontSize: 18,
     textAlign: 'center'
   }
