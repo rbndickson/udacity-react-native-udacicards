@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
   ScrollView,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -27,7 +26,7 @@ class DeckList extends Component {
     const deckItemColors = [lightBlue, lighterBlue, lightestBlue]
 
     return (
-      <ScrollView contentContainerStyle={styles.list}>
+      <ScrollView>
         {this.props.decks.map((deck, i) => (
           <DeckListItem
             title={deck.title}
@@ -41,13 +40,6 @@ class DeckList extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  list: {
-    alignItems: 'center',
-    paddingTop: 50,
-  }
-});
 
 function mapStateToProps (state) {
   const deckKeys = Object.keys(state.decks);

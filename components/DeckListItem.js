@@ -23,9 +23,8 @@ class DeckListItem extends Component {
 
 const styles = StyleSheet.create({
   listItem: {
-    width: 200,
-    paddingTop: 20,
-    paddingBottom: 20,
+    paddingTop: 25,
+    paddingBottom: 25,
     alignItems: 'center'
   },
   listText: {
