@@ -36,7 +36,7 @@ class QuizComplete extends Component {
           onPress={this.handleReset}
           >
           <Text style={styles.buttonText}>
-            Try Again
+            Restart Quiz
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
