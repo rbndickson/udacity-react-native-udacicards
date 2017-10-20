@@ -3,7 +3,10 @@ import { AsyncStorage } from 'react-native';
 const DECKS_STORAGE_KEY = 'UdaciCards:Decks'
 
 export function getDecks () {
-  return AsyncStorage.getItem(DECKS_STORAGE_KEY);
+  return AsyncStorage.getItem(DECKS_STORAGE_KEY)
+    .then((res) => {
+      return JSON.parse(res)
+    });
 }
 
 export function createDeck (title) {

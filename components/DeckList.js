@@ -18,7 +18,7 @@ class DeckList extends Component {
   componentDidMount() {
     getDecks()
       .then((decks) => {
-        this.props.dispatch(addDecks(JSON.parse(decks)))
+        this.props.dispatch(addDecks(decks))
       })
   }
 
