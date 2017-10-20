@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { createCard } from '../utils/api';
 import { addCard } from '../actions';
 
 import { white, blue, black } from '../utils/colors';
+
+import Button from './Button';
 
 class NewCard extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -46,9 +48,10 @@ class NewCard extends Component {
           value={this.state.backText}
           onChangeText={(backText) => this.setState({backText})}
         />
-        <TouchableOpacity style={styles.button} onPress={ () => {this.submitCard()}}>
-          <Text style={styles.buttonText}>Add Card</Text>
-        </TouchableOpacity>
+        <Button
+          onPress={this.submitCard}
+          text={'Add Card'}
+        />
       </View>
     )
   }
@@ -74,21 +77,6 @@ const styles = StyleSheet.create({
     borderColor: blue,
     borderWidth: 1,
     color: black
-  },
-  button: {
-    height: 45,
-    width: 200,
-    backgroundColor: white,
-    padding: 10,
-    marginTop: 20,
-    borderRadius: 7,
-    borderColor: blue,
-    borderWidth: 2,
-  },
-  buttonText: {
-    color: blue,
-    fontSize: 18,
-    textAlign: 'center'
   }
 })
 
