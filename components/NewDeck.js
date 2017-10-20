@@ -31,7 +31,7 @@ class NewDeck extends Component {
         cards: []
       }
     }))
-    this.props.navigation.goBack()
+    this.props.navigation.navigate('Deck', {title: deckTitle})
   }
 
   render() {
