@@ -6,7 +6,7 @@ class QuizRemaining extends Component {
   render() {
     return (
       <View style={styles.remainingContainer}>
-        <Text>
+        <Text style ={styles.remainingText}>
           Cards Remaining: {this.props.remaining}
         </Text>
       </View>
@@ -17,6 +17,9 @@ class QuizRemaining extends Component {
 const styles = StyleSheet.create({
   remainingContainer: {
     paddingBottom: 20
+  },
+  remainingText: {
+    fontSize: 18
   }
 })
 

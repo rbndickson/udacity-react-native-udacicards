@@ -6,7 +6,7 @@ class QuizScore extends Component {
   render() {
     return (
       <View style={styles.scoreContainer}>
-        <Text>
+        <Text style={styles.scoreText}>
           Score: {this.props.score}
         </Text>
       </View>
@@ -17,6 +17,9 @@ class QuizScore extends Component {
 const styles = StyleSheet.create({
   scoreContainer: {
     paddingBottom: 20
+  },
+  scoreText: {
+    fontSize: 18
   }
 })
 

@@ -10,6 +10,8 @@ import {
   setQuizToComplete
 } from '../actions';
 
+import { mainTextColor } from '../utils/colors';
+
 import Button from './Button';
 
 class QuizButtons extends Component {
@@ -46,10 +48,24 @@ class QuizButtons extends Component {
               <Button
                 onPress={this.handleCorrect}
                 text={'Correct'}
+                customButtonStyles={{
+                  backgroundColor: '#1affd5',
+                  borderWidth: 4
+                }}
+                customTextStyles={{
+                  color: mainTextColor
+                }}
               />
               <Button
                 onPress={this.handleIncorrect}
                 text={'Incorrect'}
+                customButtonStyles={{
+                  backgroundColor: '#FF6978',
+                  borderWidth: 4
+                }}
+                customTextStyles={{
+                  color: mainTextColor
+                }}
               />
             </View>
           : <Button

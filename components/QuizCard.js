@@ -28,10 +28,10 @@ class QuizCard extends Component {
 
 const styles = StyleSheet.create({
   textContainer: {
-    height: 60
+    minHeight: 100
   },
   cardText: {
-    fontSize: 18
+    fontSize: 22
   }
 })
 

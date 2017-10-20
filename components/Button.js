@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 
 import { buttonBackgroundColor, buttonTextColor } from '../utils/colors';
 
-export default function Button ({ onPress, text}) {
+export default function Button ({ onPress, text, customButtonStyles={}, customTextStyles={}}) {
   return (
     <TouchableOpacity
-      style={styles.button}
+      style={[styles.button, customButtonStyles]}
       onPress={onPress}
     >
-      <Text style={styles.buttonText}>{text}</Text>
+      <Text style={[styles.buttonText, customTextStyles]}>{text}</Text>
     </TouchableOpacity>
   )
 }

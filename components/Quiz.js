@@ -10,7 +10,7 @@ import QuizButtons from './QuizButtons';
 import QuizComplete from './QuizComplete';
 import QuizRemaining from './QuizRemaining';
 
-import { white } from '../utils/colors';
+import { mainBackgroundColor } from '../utils/colors';
 
 class Quiz extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingTop: 50,
-    backgroundColor: white
+    backgroundColor: mainBackgroundColor
   }
 })
 
