@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getDecks } from '../utils/api';
 import { addDecks } from '../actions';
 
-import { lightBlue, lighterBlue, lightestBlue } from '../utils/colors';
+import { listItemColorA, listItemColorB, listItemColorC } from '../utils/colors';
 
 import DeckListItem from './DeckListItem';
 
@@ -17,7 +17,7 @@ class DeckList extends Component {
   }
 
   render() {
-    const deckItemColors = [lightBlue, lighterBlue, lightestBlue]
+    const deckItemColors = [listItemColorA, listItemColorB, listItemColorC]
 
     return (
       <ScrollView>

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { Foundation } from '@expo/vector-icons';
 
-import { white, lightestBlue } from '../utils/colors';
+import { white, headerTextColor } from '../utils/colors';
 
 import DeckList from './DeckList';
 
@@ -17,7 +17,7 @@ const addDeckButton = (navigation) => {
       <Foundation
         name='plus'
         size={30}
-        color={lightestBlue}
+        color={headerTextColor}
         style={{marginRight: 10}}
       />
     </TouchableOpacity>

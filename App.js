@@ -8,7 +8,7 @@ import { Constants } from 'expo';
 import reducer from './reducers';
 import { setLocalNotification } from './utils/notifications';
 
-import { blueBlack, lightestBlue } from './utils/colors';
+import { headerTextColor, headerBackgroundColor } from './utils/colors';
 
 import Home from './components/Home';
 import NewDeck from './components/NewDeck';
@@ -65,17 +65,17 @@ const Stack = StackNavigator(
   {
     navigationOptions: {
       headerStyle: {
-        backgroundColor: blueBlack
+        backgroundColor: headerBackgroundColor
       },
       headerTitleStyle: {
-        color: lightestBlue,
+        color: headerTextColor,
         fontSize: 24
       },
       headerBackTitleStyle: {
-        color: lightestBlue,
+        color: headerTextColor,
         fontSize: 20
       },
-      headerTintColor: lightestBlue
+      headerTintColor: headerTextColor
     }
   }
 )
