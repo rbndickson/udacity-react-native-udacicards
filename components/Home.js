@@ -5,15 +5,21 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import { Foundation } from '@expo/vector-icons';
 
-import { white } from '../utils/colors';
+import { white, lightestBlue } from '../utils/colors';
 
 import DeckList from './DeckList';
 
 const addDeckButton = (navigation) => {
   return (
     <TouchableOpacity onPress={() => { navigation.navigate('NewDeck') }}>
-      <Text style={styles.addDeckText}>Add Deck</Text>
+      <Foundation
+        name='plus'
+        size={30}
+        color={lightestBlue}
+        style={{marginRight: 10}}
+      />
     </TouchableOpacity>
   );
 }

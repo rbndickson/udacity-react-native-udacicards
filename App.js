@@ -8,6 +8,8 @@ import { Constants } from 'expo';
 import reducer from './reducers';
 import { setLocalNotification } from './utils/notifications';
 
+import { blueBlack, lightestBlue } from './utils/colors';
+
 import Home from './components/Home';
 import NewDeck from './components/NewDeck';
 import Deck from './components/Deck';
@@ -35,27 +37,45 @@ export default class App extends React.Component {
   }
 }
 
-const Stack = StackNavigator({
-  Home: {
-    screen: Home
-  },
-  NewDeck: {
-    screen: NewDeck
-  },
-  Deck: {
-    screen: Deck
-  },
-  NewCard: {
-    screen: NewCard
-  },
-  Quiz: {
-    screen: Quiz
-  }
-})
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
+  }
 });
+
+const Stack = StackNavigator(
+  {
+    Home: {
+      screen: Home,
+    },
+    NewDeck: {
+      screen: NewDeck
+    },
+    Deck: {
+      screen: Deck
+    },
+    NewCard: {
+      screen: NewCard
+    },
+    Quiz: {
+      screen: Quiz
+    }
+  },
+  {
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: blueBlack
+      },
+      headerTitleStyle: {
+        color: lightestBlue,
+        fontSize: 24
+      },
+      headerBackTitleStyle: {
+        color: lightestBlue,
+        fontSize: 20
+      },
+      headerTintColor: lightestBlue
+    }
+  }
+)
