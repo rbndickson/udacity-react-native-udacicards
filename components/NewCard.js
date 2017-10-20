@@ -5,14 +5,17 @@ import { connect } from 'react-redux';
 import { createCard } from '../utils/api';
 import { addCard } from '../actions';
 
-import { white, blue, black } from '../utils/colors';
+import { white, black, mainBackgroundColor, mainTextColor } from '../utils/colors';
 
 import Button from './Button';
 
 class NewCard extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Create New Question'
+      title: 'Create New Question',
+      headerTitleStyle: {
+        fontSize: 18
+      },
     };
   }
 
@@ -31,11 +34,12 @@ class NewCard extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.form}>
         <Text style={styles.textInstructions}>
           Front:
         </Text>
         <TextInput
+          multiline = {true}
           style={styles.textInput}
           value={this.state.frontText}
           onChangeText={(frontText) => this.setState({frontText: frontText})}
@@ -44,6 +48,7 @@ class NewCard extends Component {
           Back:
         </Text>
         <TextInput
+          multiline = {true}
           style={styles.textInput}
           value={this.state.backText}
           onChangeText={(backText) => this.setState({backText})}
@@ -58,25 +63,27 @@ class NewCard extends Component {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  form: {
     flex: 1,
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 50,
-    backgroundColor: white
+    backgroundColor: mainBackgroundColor
   },
   textInstructions: {
-    marginTop: 16,
-    fontSize: 16,
-    width: 200
+    width: 260,
+    fontSize: 20,
+    marginTop: 20
   },
   textInput: {
-    width: 200,
-    height: 40,
+    width: 260,
+    height: 120,
     marginTop: 20,
-    borderColor: blue,
+    borderColor: black,
     borderWidth: 1,
-    color: black
+    borderRadius:4,
+    fontSize: 16,
+    color: mainTextColor,
+    backgroundColor: white
   }
 })
 

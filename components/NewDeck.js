@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import { black, blue, white } from '../utils/colors';
+import { black, white, mainBackgroundColor, mainTextColor } from '../utils/colors';
 
 import { createDeck, getDecks } from '../utils/api';
 import { addDeck } from '../actions';
@@ -38,7 +38,7 @@ class NewDeck extends Component {
   render() {
     return (
       <View style={styles.form}>
-        <Text>
+        <Text style={styles.textInstructions}>
           What would you like to call your deck?
         </Text>
         <TextInput
@@ -61,18 +61,21 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     paddingTop: 50,
-    backgroundColor: white
+    backgroundColor: mainBackgroundColor
   },
   textInstructions: {
-    width: 200
+    width: 200,
+    fontSize: 20
   },
   textInput: {
     width: 200,
     height: 40,
     marginTop: 20,
-    borderColor: blue,
+    borderColor: black,
     borderWidth: 1,
-    color: black
+    borderRadius:4,
+    color: mainTextColor,
+    backgroundColor: white
   }
 })
 
