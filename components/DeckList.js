@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -24,7 +25,7 @@ class DeckList extends Component {
 
   render() {
     return (
-      <View style={styles.list}>
+      <ScrollView contentContainerStyle={styles.list}>
         {this.props.decks.map(deck => (
           <DeckListItem
             title={deck.title}
@@ -33,7 +34,7 @@ class DeckList extends Component {
             navigation={this.props.navigation}
           />
         ))}
-      </View>
+      </ScrollView>
     );
   }
 }
