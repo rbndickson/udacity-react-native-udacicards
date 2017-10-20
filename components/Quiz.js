@@ -8,6 +8,7 @@ import QuizCard from './QuizCard';
 import QuizScore from './QuizScore';
 import QuizButtons from './QuizButtons';
 import QuizComplete from './QuizComplete';
+import QuizRemaining from './QuizRemaining';
 
 import { white } from '../utils/colors';
 
@@ -29,6 +30,7 @@ class Quiz extends Component {
           ? <QuizComplete />
           : <View>
               <QuizScore />
+              <QuizRemaining />
               <QuizCard />
               <QuizButtons />
             </View>
