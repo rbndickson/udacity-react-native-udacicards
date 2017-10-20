@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import { getDecks } from '../utils/api';
+import { cardsToString } from '../utils/helpers';
 
 import { blue, black } from '../utils/colors';
 
@@ -15,7 +16,9 @@ class DeckListItem extends Component {
           this.props.navigation.navigate('Deck', { title: this.props.title })
         }}
       >
-        <Text style={styles.listText}>{`${this.props.title} (${this.props.amountOfCards} cards)`}</Text>
+        <Text style={styles.listText}>
+          {`${this.props.title} (${cardsToString(this.props.amountOfCards)})`}
+        </Text>
       </TouchableOpacity>
     );
   }

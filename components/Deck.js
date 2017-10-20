@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { setQuizDeckTitle } from '../actions';
+import { cardsToString } from '../utils/helpers';
 
 import { mainBackgroundColor } from '../utils/colors';
 
@@ -41,7 +42,7 @@ class Deck extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.bodyText}>
-          {`This deck has ${deck.cards.length} Cards`}
+          {`This deck has ${cardsToString(deck.cards.length)}`}
         </Text>
         <Button
           onPress={this.handleNewDeck}
