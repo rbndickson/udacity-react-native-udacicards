@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { setQuizDeckTitle } from '../actions';
 
-import { white, blue, black } from '../utils/colors';
+import { white } from '../utils/colors';
+
+import Button from './Button';
 
 class Deck extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: navigation.state.params.title
     };
+  }
+
+  handleNewDeck = () => {
+    const { navigation, deck } = this.props;
+    navigation.navigate('NewCard', {title: deck.title})
   }
 
   handleQuizStart = () => {
@@ -29,31 +36,21 @@ class Deck extends Component {
   }
 
   render() {
-    const { navigation, deck } = this.props;
+    const { deck } = this.props;
 
     return (
       <View style={styles.container}>
         <Text style={styles.bodyText}>
           {`This deck has ${deck.cards.length} Cards`}
         </Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={ () => {
-            navigation.navigate('NewCard', {title: deck.title})
-          }}
-          >
-          <Text
-            style={styles.buttonText}
-          >
-            Create New Question
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
+        <Button
+          onPress={this.handleNewDeck}
+          text={'Create New Question'}
+        />
+        <Button
           onPress={this.handleQuizStart}
-          >
-          <Text style={styles.buttonText}>Start a Quiz</Text>
-        </TouchableOpacity>
+          text={'Start a Quiz'}
+        />
       </View>
     )
   }
@@ -70,21 +67,6 @@ const styles = StyleSheet.create({
   bodyText: {
     fontSize: 18,
     marginBottom: 20
-  },
-  button: {
-    height: 45,
-    width: 200,
-    backgroundColor: white,
-    padding: 10,
-    marginTop: 20,
-    borderRadius: 7,
-    borderColor: blue,
-    borderWidth: 2,
-  },
-  buttonText: {
-    color: blue,
-    fontSize: 18,
-    textAlign: 'center'
   }
 })
 
