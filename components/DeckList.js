@@ -41,7 +41,6 @@ class DeckList extends Component {
 
 const styles = StyleSheet.create({
   list: {
-    flex: 1,
     alignItems: 'center',
     paddingTop: 50,
   }
