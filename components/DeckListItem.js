@@ -3,14 +3,14 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import { getDecks } from '../utils/api';
 
-import { blue, white } from '../utils/colors';
+import { blue, black } from '../utils/colors';
 
 class DeckListItem extends Component {
   render () {
     return (
       <TouchableOpacity
         key={this.props.title}
-        style={styles.listItem}
+        style={[styles.listItem, { backgroundColor: this.props.color }]}
         onPress={() => {
           this.props.navigation.navigate('Deck', { title: this.props.title })
         }}
@@ -26,13 +26,12 @@ const styles = StyleSheet.create({
     width: 200,
     paddingTop: 20,
     paddingBottom: 20,
-    backgroundColor: blue,
     alignItems: 'center'
   },
   listText: {
     paddingLeft: 20,
     paddingRight: 20,
-    color: white,
+    color: black,
     fontSize: 18
   }
 });

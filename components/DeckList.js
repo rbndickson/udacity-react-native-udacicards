@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { getDecks } from '../utils/api';
 import { addDecks } from '../actions';
 
-import { white, black, blue } from '../utils/colors';
+import { lightBlue, lighterBlue, lightestBlue } from '../utils/colors';
 
 import DeckListItem from './DeckListItem';
 
@@ -24,14 +24,17 @@ class DeckList extends Component {
   }
 
   render() {
+    const deckItemColors = [lightBlue, lighterBlue, lightestBlue]
+
     return (
       <ScrollView contentContainerStyle={styles.list}>
-        {this.props.decks.map(deck => (
+        {this.props.decks.map((deck, i) => (
           <DeckListItem
             title={deck.title}
             amountOfCards={deck.cards.length}
             key={deck.title}
             navigation={this.props.navigation}
+            color={deckItemColors[i % 3]}
           />
         ))}
       </ScrollView>
