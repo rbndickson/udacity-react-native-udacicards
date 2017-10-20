@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { getDecks } from '../utils/api';
 import { addDecks } from '../actions';
@@ -33,7 +27,7 @@ class DeckList extends Component {
             amountOfCards={deck.cards.length}
             key={deck.title}
             navigation={this.props.navigation}
-            color={deckItemColors[i % 3]}
+            backgroundColor={deckItemColors[i % 3]}
           />
         ))}
       </ScrollView>

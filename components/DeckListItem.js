@@ -10,7 +10,7 @@ class DeckListItem extends Component {
     return (
       <TouchableOpacity
         key={this.props.title}
-        style={[styles.listItem, { backgroundColor: this.props.color }]}
+        style={[styles.listItem, { backgroundColor: this.props.backgroundColor }]}
         onPress={() => {
           this.props.navigation.navigate('Deck', { title: this.props.title })
         }}
