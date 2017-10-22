@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Animated, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { white } from '../utils/colors';
+
+import QuizCardBack from './QuizCardBack';
 
 class QuizCard extends Component {
   render() {
@@ -18,9 +20,7 @@ class QuizCard extends Component {
         </View>
         <View style={styles.textContainer}>
           {showAnswer && (
-            <Text style={styles.cardText}>
-              {backText}
-            </Text>
+            <QuizCardBack />
           )}
         </View>
       </View>
