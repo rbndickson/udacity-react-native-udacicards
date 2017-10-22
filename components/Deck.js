@@ -48,10 +48,13 @@ class Deck extends Component {
           onPress={this.handleNewDeck}
           text={'Create New Question'}
         />
-        <Button
-          onPress={this.handleQuizStart}
-          text={'Start a Quiz'}
-        />
+        {deck.cards.length === 0
+          ? <Text style={styles.bodyText}>Add some cards to enable a quiz!</Text>
+          : <Button
+              onPress={this.handleQuizStart}
+              text={'Start a Quiz'}
+            />
+        }
       </View>
     )
   }
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     fontSize: 18,
+    marginTop: 20,
     marginBottom: 20
   }
 })
