@@ -71,11 +71,11 @@ const Stack = StackNavigator(
       },
       headerTitleStyle: {
         color: headerTextColor,
-        fontSize: 24
+        fontSize: 18
       },
       headerBackTitleStyle: {
         color: headerTextColor,
-        fontSize: 20
+        fontSize: 16
       },
       headerTintColor: headerTextColor
     }

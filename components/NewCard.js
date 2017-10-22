@@ -12,10 +12,7 @@ import Button from './Button';
 class NewCard extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Create New Question',
-      headerTitleStyle: {
-        fontSize: 18
-      },
+      title: 'New Question'
     };
   }
 

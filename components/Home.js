@@ -16,7 +16,7 @@ const addDeckButton = (navigation) => {
     <TouchableOpacity onPress={() => { navigation.navigate('NewDeck') }}>
       <Foundation
         name='plus'
-        size={30}
+        size={28}
         color={headerTextColor}
         style={{marginRight: 10}}
       />
