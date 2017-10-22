@@ -10,18 +10,20 @@ import { setLocalNotification } from './utils/notifications';
 
 import { headerTextColor, headerBackgroundColor } from './utils/colors';
 
+import { setInitialDecks } from './utils/initialDecks'
+
 import Home from './components/Home';
 import NewDeck from './components/NewDeck';
 import Deck from './components/Deck';
 import NewCard from './components/NewCard';
 import Quiz from './components/Quiz';
 
-
 const store = createStore(reducer);
 
 export default class App extends React.Component {
   componentDidMount () {
     setLocalNotification()
+    setInitialDecks()
   }
   render() {
     return (

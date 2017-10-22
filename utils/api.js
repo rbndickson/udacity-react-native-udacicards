@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 
-const DECKS_STORAGE_KEY = 'UdaciCards:Decks'
+export const DECKS_STORAGE_KEY = 'UdaciCards:Decks'
 
 export function getDecks () {
   return AsyncStorage.getItem(DECKS_STORAGE_KEY)
