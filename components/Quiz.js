@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import { setQuizDeck, resetQuiz } from '../actions';
+import { resetQuiz } from '../actions';
 
 import QuizStatusBar from './QuizStatusBar';
 import QuizCard from './QuizCard';
 import QuizButtons from './QuizButtons';
 import QuizComplete from './QuizComplete';
 
-import { mainBackgroundColor } from '../utils/colors';
+import { white } from '../utils/colors';
 
 class Quiz extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -27,7 +27,7 @@ class Quiz extends Component {
       <View style={styles.container}>
         {this.props.quizComplete
           ? <QuizComplete navigation={this.props.navigation} />
-          : <View>
+          : <View style={styles.quizContainer}>
               <QuizStatusBar />
               <QuizCard />
               <QuizButtons />
@@ -40,7 +40,12 @@ class Quiz extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: mainBackgroundColor
+    backgroundColor: white,
+    flex: 1
+  },
+  quizContainer: {
+    justifyContent: 'space-between',
+    flex: 1
   }
 })
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { mainBackgroundColor } from '../utils/colors';
+
 import QuizScore from './QuizScore';
 import QuizRemaining from './QuizRemaining';
 
@@ -17,6 +19,7 @@ const styles = StyleSheet.create({
   quizHeaderContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20
+    paddingTop: 20,
+    backgroundColor: mainBackgroundColor
   },
 })

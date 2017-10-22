@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { StackNavigator } from 'react-navigation';

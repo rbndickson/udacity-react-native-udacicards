@@ -10,7 +10,7 @@ class QuizCard extends Component {
     const { frontText, backText } = deck.cards[currentCardIndex];
 
     return (
-      <View>
+      <View style={styles.cardContainer}>
         <View style={styles.textContainer}>
           <Text style={styles.cardText}>
             {frontText}
@@ -29,6 +29,9 @@ class QuizCard extends Component {
 };
 
 const styles = StyleSheet.create({
+  cardContainer: {
+    flex: 1
+  },
   textContainer: {
     minHeight: 100,
     backgroundColor: white

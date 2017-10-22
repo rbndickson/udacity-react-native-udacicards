@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { connect } from 'react-redux';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import { buttonBackgroundColor, buttonTextColor } from '../utils/colors';
 
-export default function Button ({ onPress, text, customButtonStyles={}, customTextStyles={}}) {
+export default function Button ({ onPress, text }) {
   return (
     <TouchableOpacity
-      style={[styles.button, customButtonStyles]}
+      style={styles.button}
       onPress={onPress}
     >
-      <Text style={[styles.buttonText, customTextStyles]}>{text}</Text>
+      <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   )
 }
@@ -21,7 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: buttonBackgroundColor,
     padding: 10,
     marginTop: 20,
-    borderRadius: 20,
+    borderRadius: 20
   },
   buttonText: {
     color: buttonTextColor,

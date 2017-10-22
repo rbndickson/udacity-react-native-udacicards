@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 
 import {
@@ -10,7 +10,7 @@ import {
   setQuizToComplete
 } from '../actions';
 
-import { mainTextColor } from '../utils/colors';
+import { mainTextColor, headerTextColor } from '../utils/colors';
 
 import Button from './Button';
 
@@ -44,39 +44,71 @@ class QuizButtons extends Component {
     return (
       <View>
         {this.props.showAnswer
-          ? <View>
-              <Button
-                onPress={this.handleCorrect}
-                text={'Correct'}
-                customButtonStyles={{
-                  backgroundColor: '#1affd5',
-                  borderWidth: 4
-                }}
-                customTextStyles={{
-                  color: mainTextColor
-                }}
-              />
-              <Button
+          ? <View style={styles.answerButtonsContainer}>
+              <TouchableOpacity
                 onPress={this.handleIncorrect}
-                text={'Incorrect'}
-                customButtonStyles={{
-                  backgroundColor: '#FF6978',
-                  borderWidth: 4
-                }}
-                customTextStyles={{
-                  color: mainTextColor
-                }}
-              />
+                style={[styles.button, styles.incorrectButton]}
+              >
+                <Text style={styles.buttonText}>
+                  Incorrect
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={this.handleCorrect}
+                style={[styles.button, styles.correctButton]}
+              >
+                <Text style={styles.buttonText}>
+                  Correct
+                </Text>
+              </TouchableOpacity>
             </View>
-          : <Button
+          : <TouchableOpacity
               onPress={this.handleShowAnswer}
               text={'Show Answer'}
-            />
+              style={[styles.button, styles.showAnswerButton]}
+            >
+              <Text style={styles.showAnswerButtonText}>
+                Show Answer
+              </Text>
+            </TouchableOpacity>
         }
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  answerButtonsContainer: {
+    flexDirection: 'row'
+  },
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  correctButton: {
+    flex: 1,
+    height: 100,
+    backgroundColor: '#1affd5'
+  },
+  incorrectButton: {
+    flex: 1,
+    height: 100,
+    backgroundColor: '#ff6978'
+  },
+  showAnswerButton: {
+    backgroundColor: mainTextColor,
+    height: 100
+  },
+  showAnswerButtonText: {
+    color: headerTextColor,
+    fontSize: 20
+  },
+  buttonText: {
+    alignSelf: 'center',
+    fontSize: 20,
+    color: mainTextColor
+  }
+})
 
 function mapStateToProps (state) {
   return {

@@ -25,20 +25,24 @@ class QuizComplete extends Component {
   render() {
     return (
       <View style={styles.quizCompleteContainer}>
-        <Text style={styles.quizCompleteTitle}>
-          Quiz Complete!
-        </Text>
-        <Text style={styles.quizCompleteBody}>
-          {`You scored ${this.props.score} out of ${this.props.cardQuantity}.`}
-        </Text>
-        <Button
-          onPress={this.handleReset}
-          text={'Restart Quiz'}
-        />
-        <Button
-          onPress={this.handlebackToDeck}
-          text={'Back to Deck'}
-        />
+        <View>
+          <Text style={styles.quizCompleteTitle}>
+            Quiz Complete!
+          </Text>
+          <Text style={styles.quizCompleteBody}>
+            {`You scored ${this.props.score} out of ${this.props.cardQuantity}`}
+          </Text>
+        </View>
+        <View>
+          <Button
+            onPress={this.handleReset}
+            text={'Restart Quiz'}
+          />
+          <Button
+            onPress={this.handlebackToDeck}
+            text={'Back to Deck'}
+          />
+        </View>
       </View>
     )
   }
@@ -46,15 +50,17 @@ class QuizComplete extends Component {
 
 const styles = StyleSheet.create({
   quizCompleteContainer: {
-    alignItems: 'center'
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'space-around'
   },
   quizCompleteTitle: {
-    fontSize: 20,
+    fontSize: 26,
     textAlign: 'center',
     marginBottom: 20
   },
   quizCompleteBody: {
-    fontSize: 18,
+    fontSize: 22,
     textAlign: 'center'
   }
 })

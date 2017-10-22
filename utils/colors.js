@@ -11,6 +11,7 @@ const azureWhite   = '#e1eff6';
 
 export const yesGreen = '#1affd5';
 export const noRed = '#ff6978';
+export const showAnswerButtonColor = lightestBlue;
 
 export const headerBackgroundColor = black;
 export const headerTextColor       = lightestBlue;
