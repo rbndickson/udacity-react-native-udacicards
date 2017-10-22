@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 22,
-    paddingLeft: 40,
-    paddingRight: 40,
+    paddingLeft: 20,
+    paddingRight: 20,
     paddingTop: 40,
     alignSelf: 'center'
   }
