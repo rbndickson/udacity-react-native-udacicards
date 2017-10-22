@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 
 import { setQuizDeck, resetQuiz } from '../actions';
 
+import QuizStatusBar from './QuizStatusBar';
 import QuizCard from './QuizCard';
-import QuizScore from './QuizScore';
 import QuizButtons from './QuizButtons';
 import QuizComplete from './QuizComplete';
-import QuizRemaining from './QuizRemaining';
 
 import { mainBackgroundColor } from '../utils/colors';
 
@@ -29,8 +28,7 @@ class Quiz extends Component {
         {this.props.quizComplete
           ? <QuizComplete navigation={this.props.navigation} />
           : <View>
-              <QuizScore />
-              <QuizRemaining />
+              <QuizStatusBar />
               <QuizCard />
               <QuizButtons />
             </View>
