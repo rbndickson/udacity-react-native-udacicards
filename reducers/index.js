@@ -1,3 +1,4 @@
+import { initialDecksData } from '../utils/initialDecks';
 import { combineReducers } from 'redux';
 import {
   ADD_DECKS,
@@ -12,7 +13,7 @@ import {
   RESET_QUIZ
 } from '../actions';
 
-function decks (state = {}, action) {
+function decks (state = initialDecksData, action) {
   switch (action.type) {
     case ADD_DECKS :
       return {

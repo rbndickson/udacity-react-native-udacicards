@@ -1,7 +1,8 @@
 import { AsyncStorage } from 'react-native';
-import{ DECKS_STORAGE_KEY } from './api';
+import { DECKS_STORAGE_KEY } from './api';
+import { addDecks } from '../actions';
 
-const initialDecksData = {
+export const initialDecksData = {
   React: {
     title: 'React',
     cards: [
