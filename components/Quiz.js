@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 
-import { resetQuiz } from '../actions';
+import {
+  showAnswer,
+  hideAnswer,
+  updateCurrentCardIndex,
+  updateQuizScore,
+  setQuizToComplete,
+  resetQuiz
+} from '../actions';
 
 import QuizStatusBar from './QuizStatusBar';
 import QuizCard from './QuizCard';
@@ -22,6 +29,31 @@ class Quiz extends Component {
     this.props.dispatch(resetQuiz())
   }
 
+  handleShowAnswer = () => {
+    this.props.dispatch(showAnswer())
+  }
+
+  handleCorrect = () => {
+    this.props.dispatch(updateQuizScore(this.props.score + 1))
+    this.updateQuizStatus()
+    this.props.dispatch(hideAnswer())
+  }
+
+  handleIncorrect = () => {
+    this.updateQuizStatus()
+    this.props.dispatch(hideAnswer())
+  }
+
+  updateQuizStatus = () => {
+    const { deck, currentCardIndex } = this.props;
+
+    if (currentCardIndex < deck.cards.length - 1) {
+      this.props.dispatch(updateCurrentCardIndex(currentCardIndex + 1))
+    } else {
+      this.props.dispatch(setQuizToComplete())
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -30,7 +62,12 @@ class Quiz extends Component {
           : <View style={styles.quizContainer}>
               <QuizStatusBar />
               <QuizCard />
-              <QuizButtons />
+              <QuizButtons
+                handleShowAnswer={this.handleShowAnswer}
+                handleCorrect={this.handleCorrect}
+                handleIncorrect={this.handleIncorrect}
+                updateQuizStatus={this.updateQuizStatus}
+              />
             </View>
         }
       </View>
@@ -51,7 +88,10 @@ const styles = StyleSheet.create({
 
 function mapStateToProps (state) {
   return {
+    deck: state.decks[state.quiz.title],
+    currentCardIndex: state.quiz.currentCardIndex,
     quizComplete: state.quiz.complete,
+    score: state.quiz.score
   };
 }
 
