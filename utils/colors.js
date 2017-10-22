@@ -1,12 +1,9 @@
 export const white = '#fff';
 export const black = '#1b0100';
-export const blue  = '#0000ff';
 
 const lightBlue    = '#4fbffc';
 const lighterBlue  = '#68d5fd';
 const lightestBlue = '#7de4fd';
-const blueBlack    = '#2f4858';
-const darkBlue     = '#010757';
 const azureWhite   = '#e1eff6';
 
 export const yesGreen = '#1affd5';
