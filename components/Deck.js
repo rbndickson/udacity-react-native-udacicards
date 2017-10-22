@@ -33,7 +33,7 @@ class Deck extends Component {
   }
 
   deckHasCards = () => {
-    return this.props.deck.cards.length > 0
+    return this.props.deck.cards.length > 0;
   }
 
   render() {
@@ -56,7 +56,7 @@ class Deck extends Component {
             />
         }
       </View>
-    )
+    );
   }
 };
 
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20
   }
-})
+});
 
 function mapStateToProps (state, { navigation }) {
   const title = navigation.state.params.title;

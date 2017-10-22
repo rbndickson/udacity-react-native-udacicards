@@ -25,7 +25,6 @@ const addDeckButton = (navigation) => {
 }
 
 class Home extends Component {
-
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'Decks',

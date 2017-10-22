@@ -16,7 +16,7 @@ class Quiz extends Component {
     return {
       title: `Quiz: ${navigation.state.params.title}`
     };
-  }
+  };
 
   componentDidMount () {
     this.props.dispatch(resetQuiz())
@@ -34,7 +34,7 @@ class Quiz extends Component {
             </View>
         }
       </View>
-    )
+    );
   }
 };
 
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
 function mapStateToProps (state) {
   return {
     quizComplete: state.quiz.complete,
-  }
+  };
 }
 
 export default connect(mapStateToProps)(Quiz);

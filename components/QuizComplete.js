@@ -44,7 +44,7 @@ class QuizComplete extends Component {
           />
         </View>
       </View>
-    )
+    );
   }
 };
 
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center'
   }
-})
+});
 
 function mapStateToProps (state) {
   return {
     score: state.quiz.score,
     cardQuantity: state.decks[state.quiz.title].cards.length
-  }
+  };
 }
 
 export default connect(mapStateToProps)(QuizComplete);

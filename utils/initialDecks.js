@@ -24,7 +24,7 @@ const initialDecksData = {
       }
     ]
   }
-}
+};
 
 export function setInitialDecks () {
   AsyncStorage.getItem(DECKS_STORAGE_KEY).then(res => {

@@ -24,7 +24,7 @@ class QuizCard extends Component {
           )}
         </View>
       </View>
-    )
+    );
   }
 };
 
@@ -43,14 +43,14 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     alignSelf: 'center'
   }
-})
+});
 
 function mapStateToProps (state) {
   return {
     deck: state.decks[state.quiz.title],
     currentCardIndex: state.quiz.currentCardIndex,
     showAnswer: state.quiz.showAnswer,
-  }
+  };
 }
 
 export default connect(mapStateToProps)(QuizCard);

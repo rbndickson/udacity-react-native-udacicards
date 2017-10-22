@@ -10,7 +10,7 @@ class QuizScore extends Component {
           Score: {this.props.score}
         </Text>
       </View>
-    )
+    );
   }
 };
 
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 function mapStateToProps (state) {
   return {
     score: state.quiz.score,
-  }
+  };
 }
 
 export default connect(mapStateToProps)(QuizScore);

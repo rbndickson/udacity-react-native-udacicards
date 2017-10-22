@@ -37,12 +37,12 @@ function decks (state = {}, action) {
   }
 }
 
-initialQuizState = {
+const initialQuizState = {
   currentCardIndex: 0,
   score: 0,
   showAnswer: false,
   complete: false
-}
+};
 
 function quiz (state = initialQuizState, action) {
   switch (action.type) {
@@ -89,4 +89,4 @@ function quiz (state = initialQuizState, action) {
 export default combineReducers({
   decks,
   quiz,
-})
+});

@@ -11,7 +11,7 @@ export default function Button ({ onPress, text }) {
     >
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center'
   }
-})
+});

@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     backgroundColor: mainBackgroundColor
   },
-})
+});

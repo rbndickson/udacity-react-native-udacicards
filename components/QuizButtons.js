@@ -116,7 +116,7 @@ function mapStateToProps (state) {
     currentCardIndex: state.quiz.currentCardIndex,
     showAnswer: state.quiz.showAnswer,
     score: state.quiz.score
-  }
+  };
 }
 
 export default connect(mapStateToProps)(QuizButtons);

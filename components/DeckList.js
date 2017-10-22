@@ -17,7 +17,7 @@ class DeckList extends Component {
   }
 
   render() {
-    const deckItemColors = [listItemColorA, listItemColorB, listItemColorC]
+    const deckItemColors = [listItemColorA, listItemColorB, listItemColorC];
 
     return (
       <ScrollView>

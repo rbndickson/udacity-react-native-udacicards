@@ -17,7 +17,7 @@ import Button from './Button';
 class NewDeck extends Component {
   static navigationOptions = {
     title: 'Add Deck',
-  }
+  };
 
   state = {
     text: ''
@@ -25,13 +25,16 @@ class NewDeck extends Component {
 
   submitDeckTitle = () => {
     const deckTitle = this.state.text;
+
     createDeck(deckTitle)
+    
     this.props.dispatch(addDeck({
       [deckTitle]: {
         title: deckTitle,
         cards: []
       }
     }))
+
     this.props.navigation.navigate('Deck', {title: deckTitle})
   }
 

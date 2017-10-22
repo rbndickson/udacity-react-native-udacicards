@@ -10,7 +10,7 @@ import { setLocalNotification } from './utils/notifications';
 
 import { headerTextColor, headerBackgroundColor } from './utils/colors';
 
-import { setInitialDecks } from './utils/initialDecks'
+import { setInitialDecks } from './utils/initialDecks';
 
 import Home from './components/Home';
 import NewDeck from './components/NewDeck';
@@ -42,14 +42,14 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   }
 });
 
 const Stack = StackNavigator(
   {
     Home: {
-      screen: Home,
+      screen: Home
     },
     NewDeck: {
       screen: NewDeck
@@ -80,4 +80,4 @@ const Stack = StackNavigator(
       headerTintColor: headerTextColor
     }
   }
-)
+);

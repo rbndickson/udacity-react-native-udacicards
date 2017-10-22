@@ -10,7 +10,7 @@ class QuizRemaining extends Component {
           Cards Remaining: {this.props.remaining}
         </Text>
       </View>
-    )
+    );
   }
 };
 
@@ -24,12 +24,12 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (state) {
-  const deck = state.decks[state.quiz.title]
+  const deck = state.decks[state.quiz.title];
   const totalCards = deck.cards.length;
 
   return {
     remaining: totalCards - state.quiz.currentCardIndex,
-  }
+  };
 }
 
 export default connect(mapStateToProps)(QuizRemaining);

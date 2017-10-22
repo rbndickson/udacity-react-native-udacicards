@@ -22,7 +22,7 @@ export function createNotification () {
       sticky: false,
       vibrate: true
     }
-  }
+  };
 }
 
 export function setLocalNotification () {
