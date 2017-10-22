@@ -6,6 +6,7 @@ import {
   View
 } from 'react-native';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
 import { black, white, mainBackgroundColor, mainTextColor } from '../utils/colors';
 
@@ -27,7 +28,7 @@ class NewDeck extends Component {
     const deckTitle = this.state.text;
 
     createDeck(deckTitle)
-    
+
     this.props.dispatch(addDeck({
       [deckTitle]: {
         title: deckTitle,
@@ -35,7 +36,14 @@ class NewDeck extends Component {
       }
     }))
 
-    this.props.navigation.navigate('Deck', {title: deckTitle})
+    this.props.navigation.dispatch(NavigationActions.reset(
+      {
+        index: 1,
+        actions: [
+          NavigationActions.navigate({ routeName: 'Home' }),
+          NavigationActions.navigate({ routeName: 'Deck', params: { title: deckTitle } })
+        ]
+      }));
   }
 
   render() {
