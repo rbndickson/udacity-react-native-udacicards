@@ -24,7 +24,7 @@ class QuizComplete extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.quizCompleteContainer}>
         <Text style={styles.quizCompleteTitle}>
           Quiz Complete!
         </Text>
@@ -45,6 +45,9 @@ class QuizComplete extends Component {
 };
 
 const styles = StyleSheet.create({
+  quizCompleteContainer: {
+    alignItems: 'center'
+  },
   quizCompleteTitle: {
     fontSize: 20,
     textAlign: 'center',
