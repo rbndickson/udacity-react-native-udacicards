@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { StackNavigator } from 'react-navigation';
@@ -28,7 +28,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={styles.container}>
+        <View style={{flex: 1}}>
           <View style={{height: Constants.statusBarHeight }}>
             <StatusBar translucent />
           </View>
@@ -38,13 +38,6 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff'
-  }
-});
 
 const Stack = StackNavigator(
   {
