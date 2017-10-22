@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
 import { createCard } from '../utils/api';
 import { addCard } from '../actions';
@@ -26,6 +27,13 @@ class NewCard extends Component {
 
     createCard(title, this.state)
     this.props.dispatch(addCard(title, this.state))
+    this.props.navigation.dispatch(NavigationActions.reset(
+      {
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: 'Home' })
+        ]
+      }));
     this.props.navigation.goBack()
   }
 
