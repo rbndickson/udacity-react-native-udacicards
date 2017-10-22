@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
 import { connect } from 'react-redux';
 
 import { createCard } from '../utils/api';
@@ -35,22 +35,18 @@ class NewCard extends Component {
   render() {
     return (
       <View style={styles.form}>
-        <Text style={styles.textInstructions}>
-          Front:
-        </Text>
         <TextInput
           multiline = {true}
           style={styles.textInput}
           value={this.state.frontText}
+          placeholder={'Enter your question'}
           onChangeText={(frontText) => this.setState({frontText: frontText})}
         />
-        <Text style={styles.textInstructions}>
-          Back:
-        </Text>
         <TextInput
           multiline = {true}
           style={styles.textInput}
           value={this.state.backText}
+          placeholder={'And your answer'}
           onChangeText={(backText) => this.setState({backText})}
         />
         <Button
@@ -69,14 +65,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: mainBackgroundColor
   },
-  textInstructions: {
-    width: 260,
-    fontSize: 20,
-    marginTop: 20
-  },
   textInput: {
     width: 260,
-    height: 120,
+    height: 60,
     marginTop: 20,
     borderColor: black,
     borderWidth: 1,
@@ -85,6 +76,6 @@ const styles = StyleSheet.create({
     color: mainTextColor,
     backgroundColor: white
   }
-})
+});
 
 export default connect()(NewCard);
