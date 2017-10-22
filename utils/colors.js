@@ -9,6 +9,9 @@ const blueBlack    = '#2f4858';
 const darkBlue     = '#010757';
 const azureWhite   = '#e1eff6';
 
+export const yesGreen = '#1affd5';
+export const noRed = '#ff6978';
+
 export const headerBackgroundColor = black;
 export const headerTextColor       = lightestBlue;
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import { white } from '../utils/colors';
+
 class QuizCard extends Component {
   render() {
     const { deck, currentCardIndex, showAnswer } = this.props;
@@ -28,10 +30,15 @@ class QuizCard extends Component {
 
 const styles = StyleSheet.create({
   textContainer: {
-    minHeight: 100
+    minHeight: 100,
+    backgroundColor: white
   },
   cardText: {
-    fontSize: 22
+    fontSize: 22,
+    paddingLeft: 40,
+    paddingRight: 40,
+    paddingTop: 40,
+    alignSelf: 'center'
   }
 })
 
