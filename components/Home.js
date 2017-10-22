@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { Foundation } from '@expo/vector-icons';
 
-import { white, headerTextColor } from '../utils/colors';
+import { headerTextColor, mainBackgroundColor } from '../utils/colors';
 
 import DeckList from './DeckList';
 
@@ -34,18 +29,11 @@ class Home extends Component {
 
   render() {
     return (
-      <View style={{flex:1, backgroundColor: white}}>
+      <View style={{flex:1, backgroundColor: mainBackgroundColor}}>
         <DeckList navigation={this.props.navigation}/>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  addDeckText: {
-    fontSize: 18,
-    textAlign: 'center'
-  }
-});
 
 export default Home;
