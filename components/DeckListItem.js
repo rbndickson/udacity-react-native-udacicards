@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { getDecks } from '../utils/api';
 import { cardsToString } from '../utils/helpers';
 
-import { blue, black } from '../utils/colors';
+import { mainTextColor } from '../utils/colors';
 
 class DeckListItem extends Component {
   render () {
@@ -16,9 +17,22 @@ class DeckListItem extends Component {
           this.props.navigation.navigate('Deck', { title: this.props.title })
         }}
       >
-        <Text style={styles.listText}>
-          {`${this.props.title} (${cardsToString(this.props.amountOfCards)})`}
-        </Text>
+        <View>
+          <Text style={styles.deckTitle}>
+            {this.props.title}
+          </Text>
+        </View>
+        <View style={styles.cardAmountContainer}>
+          <Text style={styles.amountOfCards}>
+            {this.props.amountOfCards}
+          </Text>
+          <MaterialCommunityIcons
+            name='cards'
+            size={20}
+            style={{marginRight: 10}}
+            color={mainTextColor}
+          />
+        </View>
       </TouchableOpacity>
     );
   }
@@ -28,13 +42,25 @@ const styles = StyleSheet.create({
   listItem: {
     paddingTop: 25,
     paddingBottom: 25,
-    alignItems: 'center'
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
-  listText: {
+  deckTitle: {
     paddingLeft: 20,
-    paddingRight: 20,
-    color: black,
+    color: mainTextColor,
     fontSize: 18
+  },
+  cardAmountContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    paddingRight: 5
+  },
+  amountOfCards: {
+    paddingRight: 5,
+    color: mainTextColor,
+    fontSize: 20
   }
 });
 
