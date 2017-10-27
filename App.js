@@ -2,21 +2,14 @@ import React from 'react';
 import { StatusBar, View } from 'react-native';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { StackNavigator } from 'react-navigation';
 import { Constants } from 'expo';
 
 import reducer from './reducers';
 import { setLocalNotification } from './utils/notifications';
 
-import { headerTextColor, headerBackgroundColor } from './utils/colors';
-
 import { setInitialDecks } from './utils/initialDecks';
 
-import Home from './components/Home';
-import NewDeck from './components/NewDeck';
-import Deck from './components/Deck';
-import NewCard from './components/NewCard';
-import Quiz from './components/Quiz';
+import Navigation from './components/Navigation';
 
 const store = createStore(reducer);
 
@@ -32,45 +25,9 @@ export default class App extends React.Component {
           <View style={{height: Constants.statusBarHeight }}>
             <StatusBar translucent />
           </View>
-          <Stack />
+          <Navigation />
         </View>
       </Provider>
     );
   }
 }
-
-const Stack = StackNavigator(
-  {
-    Home: {
-      screen: Home
-    },
-    NewDeck: {
-      screen: NewDeck
-    },
-    Deck: {
-      screen: Deck
-    },
-    NewCard: {
-      screen: NewCard
-    },
-    Quiz: {
-      screen: Quiz
-    }
-  },
-  {
-    navigationOptions: {
-      headerStyle: {
-        backgroundColor: headerBackgroundColor
-      },
-      headerTitleStyle: {
-        color: headerTextColor,
-        fontSize: 18
-      },
-      headerBackTitleStyle: {
-        color: headerTextColor,
-        fontSize: 16
-      },
-      headerTintColor: headerTextColor
-    }
-  }
-);
