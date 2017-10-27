@@ -11,7 +11,7 @@ import {
   UPDATE_QUIZ_SCORE,
   SET_QUIZ_TO_COMPLETE,
   RESET_QUIZ
-} from '../actions';
+} from '../actions/types';
 
 function decks (state = initialDecksData, action) {
   switch (action.type) {
